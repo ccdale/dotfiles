@@ -1,0 +1,9 @@
+#!/bin/bash
+# see https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+
+cfgdir=$HOME/.cfg
+mkdir -p $cfgdir
+git init --bare $cfgdir
+alias config='/usr/bin/git --git-dir=$cfgdir --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+echo "alias config='/usr/bin/git --git-dir=$cfgdir --work-tree=$HOME'" >> $HOME/.bashrc
