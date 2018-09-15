@@ -33,9 +33,11 @@ let mapleader = ","
 noremap <leader>h :nohls<CR>
 
 " Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-O>:update<CR>
+" and how annoying is this
+" see below, after pathogen has loaded fugitive
+" noremap <C-Z> :update<CR>
+" vnoremap <C-Z> <C-C>:update<CR>
+" inoremap <C-Z> <C-O>:update<CR>
 
 " Quick quit command
 noremap <Leader>e :quit<CR> " Quit current window
@@ -76,6 +78,10 @@ color wombat256mod
 " You need to reload this file for the change to apply
 "
 
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 " Pathogen load
 filetype off
 
@@ -87,6 +93,12 @@ syntax on
 
 set nocompatible
 set nocp
+
+" fugitive map helpers
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+
 
 " Showing line numbers and length
 set number " show line numbers
@@ -125,11 +137,6 @@ set smartcase
 " set nowritebackup
 " set noswapfile
 set backupdir=~/.backup,/tmp
-
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 
 " ============================================================================
 " Python IDE Setup
