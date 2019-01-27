@@ -1,10 +1,43 @@
 " .vimrc file modified by Dan Sheffner
 
+" minpac package manager
+packadd minpac
+call minpac#init()
+
+" packages
+"
+" minpac
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+" Apprentice colour scheme
+call minpac#add('romainl/Apprentice')
+" ctrlp
+call minpac#add('ctrlpvim/ctrlp.vim')
+" jedi-vim
+call minpac#add('davidhalter/jedi-vim')
+" nerdtree
+call minpac#add('scrooloose/nerdtree')
+" supertab
+call minpac#add('ervandew/supertab')
+" vim-eyaml-gpg
+call minpac#add('ccdale/vim-eyaml-gpg')
+" fugitive
+call minpac#add('tpope/vim-fugitive')
+" nerdtree-tabs
+call minpac#add('jistr/vim-nerdtree-tabs')
+" vim-powerline
+call minpac#add('Lokaltog/vim-powerline')
+" vim-sensible
+call minpac#add('tpope/vim-sensible')
+
+
+" minpac commands
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+
 " Lots of credit to:
 " Sample .vimrc file by Martin Brochhaus
 " Presented at PyCon APAC 2012
 "
-runtime ~/.vim/bundle/pathogen/autoload/pathogen.vim
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -72,21 +105,16 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-color wombat256mod
+if has("gui_running")
+    color apprentice
+else
+    "color wombat256mod
+    color apprentice
+endif
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 "
-
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-" Pathogen load
-filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
@@ -222,3 +250,12 @@ set pastetoggle=<F2>
 " turn off auto complete
 let g:pymode_rope_completion = 1
 let g:pymode_rope_complete_on_dot = 1
+
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<s-c>s"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
