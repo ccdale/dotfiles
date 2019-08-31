@@ -38,14 +38,15 @@
 
 # Default: /
 #MONITORED_DISK=/
+MONITORED_DISK=/mnt/studio
 
 # Minimum disk throughput that triggers the notification (in kB/s)
 # Default: 50
 #DISK_IO_THRESHOLD=50
 
 # Default: eth0
-MONITORED_NETWORK=eth0
-#MONITORED_NETWORK=enp3s0
+# MONITORED_NETWORK=eth0
+MONITORED_NETWORK=enp7s0
 
 # Unit used for network throughput (either bits per second or bytes per second)
 # Default: bits

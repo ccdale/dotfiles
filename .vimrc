@@ -164,7 +164,9 @@ set smartcase
 " set nobackup
 " set nowritebackup
 " set noswapfile
-set backupdir=~/.backup,/tmp
+set backupdir=~/.backup//,~/tmp//,/tmp
+set directory=~/.swap//,~/tmp//,/tmp//
+set undodir=~/.undo//,~/tmp//,/tmp//
 
 " ============================================================================
 " Python IDE Setup
